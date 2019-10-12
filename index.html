@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+<div ng-app="myApp" ng-controller="myCtrl">
+<div>
+<label>EMp id :</label> <input type="text" ng-model="empData.empId" name="id"></input>
+</div>
+
+<div class="mainData">
+	<div class="errorSection" ng-show="error">
+    	<p ng-repeat="(key, message) in errorMessages">{{ message }}</p>
+    </div>
+    <div class="message" ng-show="successMessage"> 
+        <p>Data is saved successfully</p>
+    </div>
+	<table border="1" cellpadding="2" cellspacing="2" width="500px">
+    	<tr>
+          <th>FirstName</th>
+          <th>LastName</th>          
+          <th>Salary</th>
+          <th>&nbsp;</th>
+        </tr>
+        <tr ng-repeat="records in empData.records track by $index">
+        	<td width="50px">
+            	<input ng-model="records.firstName" type="text"></input>
+            </td>
+            <td width="50px">
+            	<input ng-model="records.lastName" type="text"></input>
+            </td>
+           
+            <td width="50px">
+            	<input ng-model="records.salary" type="text"></input>
+            </td>
+            <td width="70%">
+            	<a href="" ng-click="deleteRows($index)">X</a>
+            </td>
+        </tr>
+    </table>
+    <input type="button" value="submit" ng-click="onSubmit()">
+</div>
+</div>
+<script src="main-controller.js"></script>
+<script src="error-message-constants.js"></script>
+</body>
+</html>
